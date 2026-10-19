@@ -1,0 +1,6 @@
+model-viewer v4.1.0
+Copyright 2019 Google LLC
+SPDX-License-Identifier: BSD-3-Clause
+https://github.com/google/model-viewer
+
+Bundled for offline use by the IDEA-05B project page.

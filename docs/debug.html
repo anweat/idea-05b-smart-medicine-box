@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><title>debug</title></head><body style="margin:0">
+<iframe id="f" src="./index.html" style="width:390px;height:844px;border:0"></iframe>
+<script>
+document.getElementById('f').onload=function(){
+  setTimeout(function(){
+    try{
+      var w=document.getElementById('f').contentWindow;
+      var d=w.document;
+      var sw=d.documentElement.scrollWidth, bw=d.body.scrollWidth;
+      var wide=[];
+      d.querySelectorAll('*').forEach(function(el){
+        var r=el.getBoundingClientRect();
+        if(r.width>390.5 && r.height>0) wide.push(el.tagName+'.'+(el.className||'')+':'+Math.round(r.width));
+      });
+      document.title='IW='+w.innerWidth+' SW='+sw+' BW='+bw+' | '+wide.slice(0,12).join(' ; ');
+    }catch(e){document.title='ERR '+e}
+  },2500);
+};
+</script></body></html>

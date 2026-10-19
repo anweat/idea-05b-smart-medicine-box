@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IDEA-05B 智能药盒 · 把取药做简单</title>
+<meta name="description" content="IDEA-05B 智能药盒：7 格演进版，可取出药杯 + 前唇倒药口，只称药芯的称重三态，环境感应、离线语音与双端 App。">
+<meta property="og:title" content="IDEA-05B 智能药盒 · 把取药做简单">
+<meta property="og:description" content="7 格演进 · 可取出药杯 · 称重三态 · 环境感应 · 离线语音 · 双端 App">
+<meta property="og:image" content="https://anweat.github.io/idea-05b-smart-medicine-box/assets/og.png">
+<meta property="og:url" content="https://anweat.github.io/idea-05b-smart-medicine-box/">
+<meta name="theme-color" content="#F6F8FB">
+<link rel="canonical" href="https://anweat.github.io/idea-05b-smart-medicine-box/">
+<meta property="og:type" content="website">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --bg:#F6F8FB; --ink:#1F2A37; --muted:#617083; --line:#E2EAF3;
+  --blue:#1D6FD6; --teal:#0F7B6C; --warm:#E07A32; --card:#FFFFFF;
+  --max:1180px; --radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);overflow-x:hidden;font-family:"Hiragino Sans GB","PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.nav{position:sticky;top:0;z-index:60;background:rgba(246,248,251,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(226,234,243,.9)}
+.nav-inner{height:66px;display:flex;align-items:center;gap:26px}
+.brand{font-size:17px;font-weight:800;letter-spacing:.4px;text-decoration:none;white-space:nowrap}
+.brand span{color:var(--blue)}
+.nav-links{display:flex;gap:22px;margin-left:auto}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none}
+.nav-links a:hover{color:var(--blue)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:12px;border:1px solid #CFDDEC;background:#fff;color:var(--ink);font-size:13.5px;font-weight:600;text-decoration:none;transition:.2s;cursor:pointer}
+.btn:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px)}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn.primary:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.nav .btn{padding:9px 14px;font-size:12.5px}
+
+.hero{position:relative;padding:74px 0 26px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
+  radial-gradient(680px 420px at 82% 8%, rgba(29,111,214,.12), transparent 62%),
+  radial-gradient(520px 380px at 6% 82%, rgba(15,123,108,.09), transparent 62%),
+  radial-gradient(420px 320px at 72% 86%, rgba(224,122,50,.08), transparent 62%)}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:26px;align-items:center}
+.eyebrow{font-size:11.5px;letter-spacing:2.4px;color:var(--blue);font-weight:800;text-transform:uppercase}
+h1{font-size:clamp(46px,6.2vw,78px);line-height:1.03;letter-spacing:-2.5px;margin:16px 0 20px;font-weight:800}
+h1 em{font-style:normal;color:var(--blue)}
+.lead{font-size:16.5px;line-height:1.95;color:#4B5A6B;max-width:560px;margin:0 0 22px}
+.badges{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 26px}
+.badge{font-size:12px;color:#415166;background:#fff;border:1px solid var(--line);padding:7px 11px;border-radius:999px}
+.badge b{color:var(--blue);font-weight:700}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.hero-visual{position:relative;min-height:390px;display:flex;align-items:center;justify-content:center}
+.hero-visual .blob{position:absolute;width:78%;height:64%;background:linear-gradient(135deg,rgba(29,111,214,.16),rgba(15,123,108,.10));filter:blur(38px);border-radius:50%}
+.hero-visual img{position:relative;width:112%;max-width:720px;transform:rotate(-4deg);filter:drop-shadow(0 34px 44px rgba(22,44,76,.14))}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:48px}
+.stat{background:#fff;padding:20px 18px;text-align:center}
+.stat b{display:block;font-size:23px;letter-spacing:-.5px;line-height:1.3}
+.stat span{font-size:11.5px;color:var(--muted)}
+
+section{padding:86px 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:34px}
+.kicker{font-size:11px;letter-spacing:2.2px;color:var(--blue);font-weight:800;text-transform:uppercase;margin-bottom:8px}
+h2{font-size:clamp(30px,3.4vw,40px);line-height:1.15;letter-spacing:-1px;margin:0;font-weight:800}
+.sec-sub{color:var(--muted);font-size:14px;max-width:520px;line-height:1.8;margin:0}
+.pain{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pain-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px}
+.pain-card .num{font-size:11px;color:var(--blue);font-weight:800;letter-spacing:1.4px}
+.pain-card h4{font-size:15px;margin:8px 0 6px}
+.pain-card p{font-size:12.5px;color:var(--muted);line-height:1.7;margin:0}
+
+.viewer-grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
+.viewer-card{position:relative;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:radial-gradient(120% 90% at 50% 0%,#FFFFFF 0%,#EFF5FB 100%);min-height:560px}
+.viewer-card::before{content:"";position:absolute;inset:0;background-image:radial-gradient(#CBD9E8 1px,transparent 1px);background-size:22px 22px;opacity:.35;pointer-events:none}
+.tabs{position:absolute;top:14px;left:14px;z-index:4;display:flex;gap:4px;padding:5px;border-radius:13px;background:rgba(255,255,255,.88);border:1px solid var(--line);backdrop-filter:blur(10px)}
+.tab{border:0;background:transparent;padding:8px 14px;border-radius:9px;font:inherit;font-size:12.5px;color:var(--muted);cursor:pointer;transition:.18s}
+.tab.active{background:var(--ink);color:#fff}
+.viewer-actions{position:absolute;top:14px;right:14px;z-index:4;display:flex;gap:6px}
+.icon-btn{border:1px solid var(--line);background:rgba(255,255,255,.9);width:36px;height:36px;border-radius:11px;cursor:pointer;color:var(--muted);font-size:15px;display:grid;place-items:center}
+.icon-btn:hover{color:var(--blue);border-color:var(--blue)}
+model-viewer{position:relative;z-index:2;width:100%;height:560px;--poster-color:transparent;background:transparent}
+.viewer-hint{position:absolute;bottom:13px;left:16px;z-index:4;font-size:11.5px;color:var(--muted)}
+.viewer-hint b{color:var(--ink);font-weight:600}
+.viewer-fallback{position:absolute;inset:0;z-index:5;background:#F4F8FC;display:none;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:24px;text-align:center}
+.viewer-fallback.show{display:flex}
+.viewer-fallback img{max-height:380px;object-fit:contain}
+.viewer-fallback p{font-size:12.5px;color:var(--muted);margin:0}
+.legend{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px 18px 8px;align-self:start}
+.legend h4{font-size:13px;margin:0 0 4px;letter-spacing:.2px}
+.legend .sub{font-size:11.5px;color:var(--muted);margin:0 0 10px}
+.layer{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-top:1px solid #EDF2F8}
+.layer b{flex:0 0 24px;height:24px;border-radius:50%;background:#EAF2FC;color:var(--blue);display:grid;place-items:center;font-size:11px;font-weight:800}
+.layer div{font-size:12.5px;line-height:1.5}
+.layer small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.legend .tip{font-size:11px;color:var(--muted);border-top:1px solid #EDF2F8;padding:12px 0;line-height:1.6}
+
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center}
+.media{background:#fff;border:1px solid var(--line);border-radius:22px;padding:14px;box-shadow:0 18px 40px rgba(23,48,80,.06)}
+.media img{width:100%;border-radius:14px}
+.media figcaption{font-size:11.5px;color:var(--muted);padding:10px 4px 2px}
+.steps{display:grid;gap:12px}
+.step{display:flex;gap:14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;align-items:flex-start}
+.step b{flex:0 0 30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px}
+.step h5{margin:0 0 3px;font-size:14px}
+.step p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.6}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+.chip{font-size:11.5px;padding:6px 10px;border-radius:999px;background:#EEF6FC;color:#2B5D8C;border:1px solid #DCEBF8}
+.quote{margin:22px 0 0;padding:18px 20px;background:linear-gradient(135deg,#F1F8F6,#F4F8FD);border:1px solid #DCEBE6;border-radius:16px;font-size:14.5px;line-height:1.8;color:#274A42}
+.quote b{color:var(--teal)}
+
+.structure-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:24px;align-items:start}
+.layers{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 14px}
+.lcard b{font-size:11px;color:var(--blue);letter-spacing:1px}
+.lcard h5{margin:4px 0 3px;font-size:13px}
+.lcard p{margin:0;font-size:11.5px;color:var(--muted);line-height:1.5}
+
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.feature{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;transition:.2s}
+.feature:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(23,48,80,.07)}
+.feature .ico{width:38px;height:38px;border-radius:12px;background:#EEF6FC;color:var(--blue);display:grid;place-items:center;margin-bottom:12px}
+.feature h4{margin:0 0 6px;font-size:15px}
+.feature p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.7}
+
+.inno{display:grid;gap:12px}
+.inno-row{display:grid;grid-template-columns:52px 1fr 1.1fr;gap:18px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+.inno-row .n{font-size:22px;font-weight:800;color:#C8D9EC;letter-spacing:-1px}
+.inno-row h4{margin:0 0 4px;font-size:15px}
+.inno-row p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.7}
+.inno-row .why{font-size:12.5px;color:#2B5D8C;line-height:1.7;border-left:2px solid #D8E7F6;padding-left:14px}
+
+.spec-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:20px;align-items:start}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+td,th{padding:12px 16px;text-align:left;font-size:13px;border-bottom:1px solid #EDF2F8}
+tr:last-child td{border-bottom:0}
+th{font-weight:600;color:var(--muted);width:34%;background:#F8FBFE}
+td b{color:var(--ink)}
+.boundary{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px}
+.boundary h4{margin:0 0 10px;font-size:14px}
+.boundary li{font-size:12.5px;color:var(--muted);line-height:1.75;margin:0 0 7px;list-style:none;padding-left:16px;position:relative}
+.boundary li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:#C9D8E8}
+
+.download{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+.dl-card{background:linear-gradient(135deg,#1F2A37,#243B55);color:#fff;border-radius:22px;padding:28px;position:relative;overflow:hidden}
+.dl-card::after{content:"";position:absolute;width:280px;height:280px;border-radius:50%;right:-80px;top:-90px;background:radial-gradient(circle,rgba(29,111,214,.55),transparent 70%)}
+.dl-card h3{margin:0 0 8px;font-size:24px;letter-spacing:-.5px}
+.dl-card p{margin:0 0 18px;font-size:13px;color:#B9C9DA;line-height:1.8;max-width:440px}
+.dl-card .btn{background:#fff;border-color:#fff;color:var(--ink);position:relative;z-index:2}
+.dl-card .btn.ghost{background:transparent;border-color:#4E647A;color:#DCE7F2}
+.dl-links{display:flex;gap:10px;flex-wrap:wrap;position:relative;z-index:2}
+.dl-side{display:grid;gap:10px}
+.dl-mini{display:flex;align-items:center;justify-content:space-between;gap:14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;text-decoration:none;transition:.2s}
+.dl-mini:hover{border-color:var(--blue);transform:translateY(-1px)}
+.dl-mini b{font-size:13.5px;display:block}
+.dl-mini span{font-size:11.5px;color:var(--muted)}
+.dl-mini em{font-style:normal;color:var(--blue);font-size:12px;font-weight:700}
+.hash{font-size:11px;color:var(--muted);word-break:break-all;margin-top:14px;line-height:1.6}
+
+footer{border-top:1px solid var(--line);padding:34px 0 46px;color:var(--muted);font-size:12px}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot a{color:var(--muted);text-decoration:none}
+.foot a:hover{color:var(--blue)}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+@media(max-width:980px){
+  .nav-links{display:none}
+  .hero{padding-top:52px}
+  .hero-grid,.viewer-grid,.split,.structure-grid,.spec-grid,.download{grid-template-columns:1fr}
+  .hero-visual{min-height:0;order:-1;overflow:hidden}
+  .hero-visual img{width:100%;max-width:560px;transform:none}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .pain{grid-template-columns:repeat(2,1fr)}
+  .feature-grid{grid-template-columns:repeat(2,1fr)}
+  .layers{grid-template-columns:1fr 1fr}
+  .inno-row{grid-template-columns:40px 1fr}
+  .inno-row .why{grid-column:2}
+  section{padding:64px 0}
+  .sec-head{flex-direction:column;align-items:flex-start;gap:10px}
+  model-viewer{height:460px}
+  .viewer-card{min-height:460px}
+}
+@media(max-width:600px){
+  .wrap{padding:0 18px}
+  h1{letter-spacing:-1.5px}
+  .pain,.feature-grid{grid-template-columns:1fr}
+  .layers{grid-template-columns:1fr}
+  .pain-card,.feature,.lcard,.step,.inno-row,.dl-mini{min-width:0}
+  .hero-visual img{width:100%;max-width:100%}
+  .lead{font-size:15px;overflow-wrap:anywhere}
+  .cta .btn{width:100%}
+  model-viewer{height:380px}
+  .viewer-card{min-height:380px}
+  .tabs{left:10px;top:10px}
+  .tab{padding:7px 11px}
+  .inno-row{padding:15px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">IDEA-05B <span>智能药盒</span></a>
+    <nav class="nav-links">
+      <a href="#model">3D 模型</a>
+      <a href="#retrieval">取药几何</a>
+      <a href="#structure">结构分层</a>
+      <a href="#features">特色</a>
+      <a href="#specs">参数</a>
+      <a href="#download">下载</a>
+    </nav>
+    <a class="btn" href="https://github.com/anweat/idea-05b-smart-medicine-box" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">IDEA-05B · SMART MEDICINE BOX</div>
+        <h1>把「取药」<br><em>做简单。</em></h1>
+        <p class="lead">7 天分格、可取出药杯、只称药芯的称重三态。让老人不用抠、不用记、不用学 App——先把最难的“取”做对。</p>
+        <div class="badges">
+          <span class="badge"><b>7</b> 天分格</span>
+          <span class="badge">前唇 <b>5 mm</b> 倒药口</span>
+          <span class="badge">称重 <b>三态</b></span>
+          <span class="badge">离线语音</span>
+          <span class="badge">双端 App</span>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="#model">查看 3D 模型</a>
+          <a class="btn" href="#download">下载交付包</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="blob"></div>
+        <img src="./assets/hero.png" alt="IDEA-05B 智能药盒 3/4 视图，周三药格开盖">
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat"><b>320×70×52</b><span>外形尺寸 mm</span></div>
+        <div class="stat"><b>7 格</b><span>周一–周日 · 可取出杯</span></div>
+        <div class="stat"><b>0.2–0.5 g</b><span>称重目标精度</span></div>
+        <div class="stat"><b>¥160–180</b><span>1k 批量 BOM 估算</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="kicker">WHY / 问题</div>
+          <h2>老人面对的不是“缺一个 App”</h2>
+        </div>
+        <p class="sec-sub">真正难的是四个动作：开、倒、看、记。把每个动作的几何和交互做顺，比加一块屏更重要。</p>
+      </div>
+      <div class="pain">
+        <div class="pain-card reveal"><div class="num">01</div><h4>开盖难</h4><p>捏力、开盖力下降，儿童安全盖反而更难；需要按压弹开、大把手、无捏取。</p></div>
+        <div class="pain-card reveal"><div class="num">02</div><h4>格子深</h4><p>药片贴底、手指抠不到；需要浅口、前唇、倒药口，让药自己到口边。</p></div>
+        <div class="pain-card reveal"><div class="num">03</div><h4>忘了吃没吃</h4><p>开盖不等于吃了；需要称重 + 红外 + 霍尔，输出三态而不是“已服药”。</p></div>
+        <div class="pain-card reveal"><div class="num">04</div><h4>不会用 App</h4><p>60+ 占非网民 46.8%；设备本地 3 键 + 语音，长者端零账号。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="model" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="kicker">3D MODEL / 模型</div>
+          <h2>三种状态，自己转一转</h2>
+        </div>
+        <p class="sec-sub">整体 / 开盖 / 拆解。拖拽旋转、滚轮缩放；拆解可看 6 层结构。GLB 按需加载，每个约 2.2 MB。</p>
+      </div>
+      <div class="viewer-grid">
+        <div class="viewer-card reveal">
+          <div class="tabs" role="tablist" aria-label="模型状态">
+            <button class="tab active" data-model="assembled" role="tab" aria-selected="true">整体</button>
+            <button class="tab" data-model="open" role="tab" aria-selected="false">开盖</button>
+            <button class="tab" data-model="exploded" role="tab" aria-selected="false">拆解</button>
+          </div>
+          <div class="viewer-actions">
+            <button class="icon-btn" id="rotateBtn" title="自动旋转" aria-label="自动旋转">↻</button>
+            <button class="icon-btn" id="resetBtn" title="重置视角" aria-label="重置视角">⌂</button>
+          </div>
+          <model-viewer id="viewer"
+            src="./assets/assembled.glb"
+            alt="IDEA-05B 智能药盒 3D 模型"
+            camera-controls
+            touch-action="pan-y"
+            auto-rotate
+            auto-rotate-delay="1600"
+            rotation-per-second="16deg"
+            camera-orbit="35deg 65deg auto"
+            field-of-view="26deg"
+            shadow-intensity="0.9"
+            environment-image="neutral"
+            exposure="1.0"
+            interaction-prompt="none"
+            loading="eager">
+          </model-viewer>
+          <div class="viewer-hint"><b>拖拽</b>旋转 · <b>滚轮</b>缩放 · <b>双击</b>复位</div>
+          <div class="viewer-fallback" id="fallback">
+            <img src="./assets/exploded.png" alt="IDEA-05B 爆炸图">
+            <p>3D 模型加载失败，以上为静态爆炸图。可检查浏览器 WebGL 或网络后刷新。</p>
+          </div>
+        </div>
+        <aside class="legend reveal" id="legend">
+          <h4>6 层结构</h4>
+          <p class="sub">拆解状态下按层查看</p>
+          <div class="layer"><b>1</b><div>烟灰 PC 日盖<small>按压弹开 · 阻尼下放</small></div></div>
+          <div class="layer"><b>2</b><div>可取出药杯<small>PP · 可水洗 · 前唇 5 mm</small></div></div>
+          <div class="layer"><b>3</b><div>药芯托盘<small>7 腔 · 密封口 · 可整体抽出</small></div></div>
+          <div class="layer"><b>4</b><div>称重 / 传感板<small>7 红外 + 7 霍尔 + SHT40</small></div></div>
+          <div class="layer"><b>5</b><div>主板 / 电池<small>ESP32-C3 · 3000 mAh</small></div></div>
+          <div class="layer"><b>6</b><div>底壳 + pogo<small>磁吸充电 · 防滑脚</small></div></div>
+          <div class="tip">提示：切到「拆解」后，用鼠标滚轮拉近看药杯与前唇；移动端可双指缩放。</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="retrieval" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="kicker">RETRIEVAL / 取药几何</div>
+          <h2>把“抠药”改成“斜插 / 倾倒”</h2>
+        </div>
+        <p class="sec-sub">15 mm 浅口、5 mm 前唇、24 mm 倒药口。指腹落点距唇口只有 5 mm；手抖时也可以提杯直接倒。</p>
+      </div>
+      <div class="split">
+        <figure class="media reveal" style="margin:0">
+          <img src="./assets/retrieval.png" alt="药杯纵剖：前唇 5 mm、倒药口 24 mm、斜底">
+          <figcaption>药杯纵剖（过倒药口中心）· 浅口 15 mm + 前唇 5 mm + 24 mm 倒药口</figcaption>
+        </figure>
+        <div class="reveal">
+          <div class="steps">
+            <div class="step"><b>1</b><div><h5>开盖</h5><p>按压日盖前缘，弹起 12°；按压 &lt;3 N，阻尼下放不夹手。</p></div></div>
+            <div class="step"><b>2</b><div><h5>斜插指取</h5><p>食指 35–45° 斜插，指腹落在距唇口 5 mm 的浅槽，不用下探到格底。</p></div></div>
+            <div class="step"><b>3</b><div><h5>合盖</h5><p>磁吸辅助合到底；7 天进度灯与格内导光提示当次应服。</p></div></div>
+          </div>
+          <div class="quote">倒取 2 步：<b>提杯 → 倾斜 40–50°</b>，从 24 mm 倒药口倒入手心。手抖 / 关节炎用户不必把手指伸进格底。</div>
+          <div class="chips">
+            <span class="chip">杯 41.9 × 54 × 15 mm</span>
+            <span class="chip">内深 10–11 mm</span>
+            <span class="chip">前唇 5 mm</span>
+            <span class="chip">倒药口 24 mm</span>
+            <span class="chip">透光窗 10 × 24 mm</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="structure" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="kicker">STRUCTURE / 结构</div>
+          <h2>六层，可换药芯</h2>
+        </div>
+        <p class="sec-sub">药芯可整体抽出、可水洗、可预装；主机复用。称重台只承托药芯，不承托电池、主板和外壳。</p>
+      </div>
+      <div class="structure-grid">
+        <figure class="media reveal" style="margin:0">
+          <img src="./assets/exploded.png" alt="IDEA-05B 六层爆炸图">
+          <figcaption>爆炸图：日盖 / 药杯 / 托盘 / 称重传感 / 主板电池 / 底壳</figcaption>
+        </figure>
+        <div class="layers reveal">
+          <div class="lcard"><b>01</b><h5>烟灰 PC 日盖</h5><p>7 个独立盖，按压弹开；可整排取下。</p></div>
+          <div class="lcard"><b>02</b><h5>可取出药杯</h5><p>食品级 PP；浅口 + 前唇 + 倒药口。</p></div>
+          <div class="lcard"><b>03</b><h5>药芯托盘</h5><p>7 腔；日盖密封在托盘口，避开杯体公差。</p></div>
+          <div class="lcard"><b>04</b><h5>称重 / 传感板</h5><p>单点称重 + 7 组红外 + 7 霍尔 + SHT40。</p></div>
+          <div class="lcard"><b>05</b><h5>主板 / 电池</h5><p>ESP32-C3、BLE/WiFi、语音、3000 mAh。</p></div>
+          <div class="lcard"><b>06</b><h5>底壳 + pogo</h5><p>Type-C + 磁吸充电触点 + 防滑硅胶脚。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="kicker">FEATURES / 特色</div>
+          <h2>六个能讲清楚的特色</h2>
+        </div>
+        <p class="sec-sub">每个特色都对应一个可验证的指标，而不是一句“智能”。</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="9" width="18" height="6" rx="3"/><path d="M12 9v6"/></svg></div><h4>可取出药杯</h4><p>41.9 × 54 × 15 mm，浅口 + 前唇 5 mm + 24 mm 倒药口；可水洗、可预装、可带走。</p></div>
+        <div class="feature reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 15V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9"/><path d="M2 15h20"/><path d="M8 9h8"/></svg></div><h4>按压弹开日盖</h4><p>7 个独立日盖，按压 &lt;3 N；开 100°、阻尼下放、磁吸辅助合盖。</p></div>
+        <div class="feature reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18"/><path d="M5 8h14"/><path d="M7 16h10"/></svg></div><h4>只称药芯的称重</h4><p>只承托药芯，装药逐格标定；取药前后差重校验，输出“已确认 / 已取出未确认 / 未动”。</p></div>
+        <div class="feature reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v3"/><path d="M12 18v3"/><path d="M5.6 5.6l2.1 2.1"/><path d="M16.3 16.3l2.1 2.1"/><path d="M3 12h3"/><path d="M18 12h3"/><path d="M5.6 18.4l2.1-2.1"/><path d="M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.2"/></svg></div><h4>环境闭环</h4><p>SHT40 温湿度 + 光照 + 密封 + 干燥剂；超温/超湿给“现在做什么”，不只是显示数字。</p></div>
+        <div class="feature reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10v4h3l4 4V6L7 10H4z"/><path d="M16 9a4 4 0 0 1 0 6"/><path d="M19 6a8 8 0 0 1 0 12"/></svg></div><h4>离线语音 + 亲情语音</h4><p>断网可定时、可语音、可记录 30 天；家人录音播放，SU-03T 门控供电。</p></div>
+        <div class="feature reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg></div><h4>双端分工</h4><p>长者端零账号、3 键 + 语音 + 段码屏；家属端排药、依从性、环境、库存、远程提醒。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="kicker">DIFFERENCE / 创新</div>
+          <h2>为什么不一样</h2>
+        </div>
+        <p class="sec-sub">不是把功能堆上去，而是把每个动作的几何、精度和口径做诚实。</p>
+      </div>
+      <div class="inno">
+        <div class="inno-row reveal"><div class="n">01</div><div><h4>把“取药”当成几何问题</h4><p>15 mm 浅口、5 mm 前唇、24 mm 倒药口；指取 3 步 / 倒取 2 步。</p></div><div class="why">竞品在卷“提醒”和“格数”，很少有人把手指可达、倾倒角度、唇口高度、胶囊能否通过做成可量化指标。</div></div>
+        <div class="inno-row reveal"><div class="n">02</div><div><h4>只称药芯，不称整机</h4><p>量程从整机降到药芯；逐格记录基线，取药后做差重校验。</p></div><div class="why">整机称重会被电池、外壳和温漂吃掉精度；从“开盖推断”升级为“差重校验”，但不冒充“已服药”。</div></div>
+        <div class="inno-row reveal"><div class="n">03</div><div><h4>环境感应给动作</h4><p>&gt;30 °C 移阴凉处；&gt;75 %RH 换干燥剂；见光超阈提醒合盖。</p></div><div class="why">多数产品只显示温湿度，用户不知道 68 %RH 意味着什么；我们把“保存条件”翻译成下一步做什么。</div></div>
+        <div class="inno-row reveal"><div class="n">04</div><div><h4>把 App 从老人侧拿掉</h4><p>设备端 3 键 + 语音 + 段码屏；长者零账号；家属才用 App。</p></div><div class="why">让老人“先配网、再授权、再学 App”是把最难的一步留给最弱的人；复杂度应该移到家属端。</div></div>
+        <div class="inno-row reveal"><div class="n">05</div><div><h4>同尺寸可换药芯 + 价格卡位</h4><p>药芯可抽出水洗、可预装；BOM 约 ¥160–180，零售 ¥299–399。</p></div><div class="why">白牌 ¥23–45 只分格，进口 ¥213–888/月卖服务；中间 ¥199–399 的“买断式智能硬件”是空档。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="specs" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="kicker">SPECS / 参数</div>
+          <h2>能落地的数字</h2>
+        </div>
+        <p class="sec-sub">以下为设计目标 / 估算值；开模前需按供应商图纸、公差链与实测复核。</p>
+      </div>
+      <div class="spec-grid">
+        <table class="reveal">
+          <tr><th>外形</th><td><b>320 × 70 × 52 mm</b>，圆角 R8，暖白 ABS + 烟灰 PC</td></tr>
+          <tr><th>分格</th><td>7 格（周一–周日）· 7 只可取出药杯</td></tr>
+          <tr><th>药杯</th><td>41.9 × 54 × 15 mm · 食品级 PP · 内深 10–11 mm</td></tr>
+          <tr><th>取药</th><td>前唇 5 mm · 倒药口 24 mm · 透光窗 10 × 24 mm</td></tr>
+          <tr><th>称重</th><td>500 g 单点 + HX711 · 7 组红外 + 7 霍尔 · 目标 0.2–0.5 g</td></tr>
+          <tr><th>环境</th><td>SHT40 温湿度 + VEML7700 光照 + 目标 IP54 + 可换干燥剂</td></tr>
+          <tr><th>交互</th><td>58 × 18 段码屏 + ⌀22 主键 + 2 副键 + 7 天进度 + 7 格导光</td></tr>
+          <tr><th>语音</th><td>SU-03T 离线唤醒 + MEMS 麦克风 + 8 Ω 2 W + 亲情语音</td></tr>
+          <tr><th>电源</th><td>3.7 V 3000 mAh · Type-C + 磁吸 pogo（选配底座）</td></tr>
+          <tr><th>成本</th><td>1k 批量 BOM 约 ¥160–180 · 建议零售 ¥299–399</td></tr>
+        </table>
+        <div class="boundary reveal">
+          <h4>诚实边界</h4>
+          <ul>
+            <li>称重只证明“药离开药仓”，不证明“吞下”；对外只说三态。</li>
+            <li>单片 0.1–0.5 g，不能逐粒计数；只做整剂校验与装药基线。</li>
+            <li>5 mm 前唇、IP54、0.2–0.5 g、15 人可用性：都还没实测，是目标。</li>
+            <li>透明/烟灰 PC 不满足“遮光”；避光药需选配乳白内胆。</li>
+            <li>7 格 = 一天一格；多剂次可由家属分装，或后续加日内分隔内胆 / 21 格 SKU。</li>
+            <li>设计概念，非医疗器械；宣传禁用“治疗/诊断/替代用药”。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="download" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="kicker">DOWNLOAD / 下载</div>
+          <h2>拿走整套设计</h2>
+        </div>
+        <p class="sec-sub">设计文档、Blender 源文件、GLB、渲染图、概念图板、脚本与调研笔记。</p>
+      </div>
+      <div class="download">
+        <div class="dl-card reveal">
+          <h3>IDEA-05B 完整交付包</h3>
+          <p>v1.0.0 · 58 个文件 · 约 30 MB。含概念图板（SVG/HTML/PNG）、7 格定稿、Blender 源文件、开盖/闭盖 GLB、渲染、脚本与调研笔记。</p>
+          <div class="dl-links">
+            <a class="btn" href="https://github.com/anweat/idea-05b-smart-medicine-box/releases/download/v1.0.0/IDEA-05B_delivery_20261018.zip">下载 zip ↓</a>
+            <a class="btn ghost" href="https://github.com/anweat/idea-05b-smart-medicine-box" target="_blank" rel="noopener">查看仓库 ↗</a>
+          </div>
+          <div class="hash">SHA256 · 5f504d64cbccacf5da3447ca9380a9320c3d2e3247101caf60551b9afb837f6c</div>
+        </div>
+        <div class="dl-side">
+          <a class="dl-mini reveal" href="./board.html" target="_blank"><span><b>完整概念图板</b><span>SVG/HTML 自包含 · 可缩放</span></span><em>打开 ↗</em></a>
+          <a class="dl-mini reveal" href="./assets/assembled.glb" download><span><b>3D 模型（整体）</b><span>GLB · 2.2 MB</span></span><em>下载 ↓</em></a>
+          <a class="dl-mini reveal" href="./assets/exploded.glb" download><span><b>3D 模型（拆解）</b><span>GLB · 2.2 MB</span></span><em>下载 ↓</em></a>
+          <a class="dl-mini reveal" href="https://github.com/anweat/idea-05b-smart-medicine-box/tree/main/01_设计文档" target="_blank"><span><b>设计文档</b><span>定稿 / 取药几何 / 讲述稿</span></span><em>浏览 ↗</em></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>IDEA-05B · 7 格演进版 · 设计概念，非医疗器械</div>
+    <div><a href="https://github.com/anweat/idea-05b-smart-medicine-box" target="_blank" rel="noopener">GitHub</a> · <a href="./board.html" target="_blank">概念图板</a> · <a href="#top">回到顶部</a></div>
+  </div>
+</footer>
+
+<script type="module" src="./assets/model-viewer.min.js"></script>
+<script>
+(function(){
+  var viewer=document.getElementById('viewer');
+  var fallback=document.getElementById('fallback');
+  var rotateBtn=document.getElementById('rotateBtn');
+  var resetBtn=document.getElementById('resetBtn');
+  var tabs=document.querySelectorAll('.tab');
+  var srcs={assembled:'./assets/assembled.glb',open:'./assets/open.glb',exploded:'./assets/exploded.glb'};
+  var current='assembled';
+
+  function resetCam(){
+    if(!viewer) return;
+    viewer.cameraOrbit='35deg 65deg auto';
+    viewer.fieldOfView='30deg';
+    if(viewer.jumpCameraToGoal) viewer.jumpCameraToGoal();
+  }
+  function setModel(key,btn){
+    current=key;
+    tabs.forEach(function(b){b.classList.toggle('active',b===btn);b.setAttribute('aria-selected',b===btn?'true':'false');});
+    viewer.setAttribute('src',srcs[key]);
+    viewer.setAttribute('alt',key==='exploded'?'IDEA-05B 爆炸拆解 3D 模型':(key==='open'?'IDEA-05B 开盖状态 3D 模型':'IDEA-05B 智能药盒 3D 模型'));
+    viewer.addEventListener('load',resetCam,{once:true});
+  }
+  tabs.forEach(function(btn){btn.addEventListener('click',function(){setModel(btn.dataset.model,btn);});});
+  var initial=new URLSearchParams(location.search).get('view');
+  if(initial && srcs[initial]){var ib=document.querySelector('.tab[data-model="'+initial+'"]');if(ib){setModel(initial,ib);}}
+  if(rotateBtn){rotateBtn.addEventListener('click',function(){var on=viewer.hasAttribute('auto-rotate');if(on){viewer.removeAttribute('auto-rotate');rotateBtn.style.color='#9AA8B8';}else{viewer.setAttribute('auto-rotate','');rotateBtn.style.color='';}});}
+  if(resetBtn){resetBtn.addEventListener('click',resetCam);}
+  // fallback if model-viewer doesn't load
+  setTimeout(function(){
+    if(!(window.customElements && customElements.get('model-viewer'))){
+      if(fallback) fallback.classList.add('show');
+      if(viewer) viewer.style.display='none';
+    }
+  },4000);
+  // reveal
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  }else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});}
+})();
+</script>
+</body>
+</html>
