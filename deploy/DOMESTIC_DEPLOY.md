@@ -74,6 +74,22 @@
 
 ## 3. 方案 B：EdgeOne Pages（最快、国内速度最稳）
 
+### 命令行部署（推荐，已验证匿名部署可用）
+
+```bash
+# 静态站 zip 已生成：deploy/docs_site.zip
+npx edgeone makers deploy ./deploy/docs_site.zip \
+  -n idea-05b-smart-pill-box \
+  --anonymous --site china
+```
+
+- 成功后会输出 `Access URL`（带临时 token）、Project ID、Deploy ID、Claim 链接；
+- 匿名项目约 1 小时内需认领，否则删除；
+- 认领：`npx edgeone makers claim --sid <Sid>`（需先 `npx edgeone login --site china`）；
+- 长期/CI：创建 EdgeOne API Token，`edgeone makers deploy ... -t <TOKEN>`。
+
+### 控制台/拖拽部署
+
 1. 登录 [EdgeOne Pages](https://pages.edgeone.ai/)（腾讯云账号 / EdgeOne 账号）。
 2. 选择 **Pages Drop**（拖放部署）或 **Git 集成**：
    - Pages Drop：直接把 `deploy/docs_site.zip` 拖进去；
