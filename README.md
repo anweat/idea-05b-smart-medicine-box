@@ -1,4 +1,7 @@
-# IDEA-05 智能药盒 · 7 格演进版 · 交付包
+# IDEA-05B 智能药盒 · 7 格演进版
+
+> GitHub: https://github.com/anweat/idea-05b-smart-medicine-box  
+> Release（完整 zip）: https://github.com/anweat/idea-05b-smart-medicine-box/releases/tag/v1.0.0
 
 > 版本：IDEA-05B（7 格，已确认方案）
 > 日期：2026-10-18
@@ -6,7 +9,7 @@
 
 ---
 
-## 0. 先看这 4 个
+## 0. 先看这几个
 
 | 想了解 | 打开 |
 |---|---|
@@ -20,7 +23,7 @@
 
 ---
 
-## 1. 包内结构
+## 1. 项目结构
 
 ```
 IDEA-05_交付包/
