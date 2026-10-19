@@ -76,6 +76,21 @@
 
 ### 命令行部署（推荐，已验证匿名部署可用）
 
+仓库里提供了脚本 `deploy/deploy_edgeone.sh`：
+
+```bash
+# 1) 匿名部署（无需账号，临时链接）
+bash deploy/deploy_edgeone.sh
+
+# 2) 有 API Token 时（长期项目）
+EDGEONE_TOKEN=xxx bash deploy/deploy_edgeone.sh
+
+# 3) 认领匿名项目
+bash deploy/deploy_edgeone.sh --claim 3b3b8bcbd29526f90fe7f69a7f128d31
+```
+
+原始命令：
+
 ```bash
 # 静态站 zip 已生成：deploy/docs_site.zip
 npx edgeone makers deploy ./deploy/docs_site.zip \
