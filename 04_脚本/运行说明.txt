@@ -1,0 +1,24 @@
+脚本默认按原始工作区结构运行：
+  model/IDEA-05_box.blend
+  model/*.glb
+  renders/*.png
+  design/*.png
+
+在交付包内直接运行前，可在包根目录建三个软链接（或复制文件）：
+  ln -s 02_三维模型 model
+  ln -s 03_渲染图   renders
+  ln -s 00_设计图板 design
+
+然后：
+  Blender --background --factory-startup --python 04_脚本/build_model.py
+  Blender --background --python 04_脚本/render_final.py -- hero|front|top|exp|cup
+  Blender --background --python 04_脚本/export_glb.py
+  python3 04_脚本/make_board.py
+
+概念图板（SVG / HTML）：
+  python3 04_脚本/make_svg_board.py
+  # 生成 00_设计图板/10_IDEA-05B_concept_board.svg / .html（自包含，图片 base64 内嵌）
+  # 预览 PNG 可用 Chrome headless 对 SVG 截图，或直接打开 HTML
+
+透明背景渲染：
+  Blender --background --python 04_脚本/render_transparent.py -- hero|front|top|exp|cup|ui
