@@ -129,6 +129,14 @@ python3 04_脚本/make_board.py
 
 ---
 
+## 6.5 国内部署
+
+- 完整评估与操作清单：`deploy/DOMESTIC_DEPLOY.md`
+- 结论：**Gitee Pages 已停服/无入口**，Gitee 只适合做代码仓库 + 发行版附件；
+- 可行方案：**AtomGit Pages**（国内开源平台）、**GitCode Pages**、**EdgeOne Pages**（腾讯，国内 CDN）；
+- 静态站压缩包：`deploy/docs_site.zip`（约 8.5 MB，解压约 15.9 MB），可直接拖到 EdgeOne Pages Drop；
+- 链接替换脚本：`deploy/patch_links.py`，把页面里的 GitHub 仓库/Release/站点地址替换成国内地址。
+
 ## 7. 资料依据
 
 - 竞品与痛点：`06_调研笔记/research_competitors.md`（14 款对比、12 条痛点、7 条空档、40 条来源）
