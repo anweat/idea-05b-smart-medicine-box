@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IDEA-05B 3D 模型</title>
+<style>
+:root{--bg:#EEF1F5;--panel:#FFFFFF;--ink:#1F2A37;--ink2:#4A5868;--mute:#7A8899;--line:#DFE6EE;--accent:#1D6FD6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#11161C;--panel:#1A222B;--ink:#E4EAF1;--ink2:#B5C1CE;--mute:#8B99A8;--line:#2B3642;--accent:#6AA8F5}}
+:root[data-theme="dark"]{--bg:#11161C;--panel:#1A222B;--ink:#E4EAF1;--ink2:#B5C1CE;--mute:#8B99A8;--line:#2B3642;--accent:#6AA8F5}
+*{box-sizing:border-box} html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;display:flex;flex-direction:column}
+.top{display:flex;gap:14px;align-items:center;padding:10px 20px;background:var(--panel);border-bottom:1px solid var(--line)}
+.top b{font-size:15px;white-space:nowrap} .top a{color:var(--ink2);text-decoration:none;font-size:13px;white-space:nowrap} .top a:hover{color:var(--accent)} .sp{flex:1}
+.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 20px}
+.seg{display:inline-flex;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:3px}
+.seg button{font:inherit;font-size:13px;border:0;background:transparent;color:var(--ink2);padding:6px 14px;border-radius:7px;cursor:pointer;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.tog{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:6px 12px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.hint{color:var(--mute);font-size:12px;margin-left:auto}
+model-viewer{flex:1;width:100%;min-height:420px;background:radial-gradient(ellipse at 50% 40%,var(--panel),var(--bg));--poster-color:transparent}
+.hs{border:0;background:transparent;padding:0;cursor:default}
+.hs::before{content:"";display:block;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(255,255,255,.85)}
+.hs span{position:absolute;left:18px;top:-6px;white-space:nowrap;background:var(--panel);color:var(--ink2);border:1px solid var(--line);border-radius:8px;padding:4px 9px;font-size:12px;line-height:1.35;box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.hs span b{display:block;color:var(--ink);font-size:13px}
+.nolabels .hs span{display:none}
+@media (max-width:640px){.top{padding:8px 12px;gap:10px} .bar{padding:10px 12px} .hint{display:none} .hs span{font-size:11px} .top .opt{display:none}}
+</style>
+<script type="module" src="../assets/model-viewer.min.js"></script>
+</head><body>
+<div class="top"><b>IDEA-05B 智能药盒 · 3D</b><div class="sp"></div>
+<a href="index.html">← 介绍页</a><a class="opt" href="https://github.com/anweat/idea-05b-smart-medicine-box" target="_blank" rel="noopener">GitHub</a></div>
+<div class="bar">
+  <div class="seg" role="group" aria-label="状态">
+    <button data-src="assets/closed.glb">闭盖</button>
+    <button data-src="assets/open.glb" aria-pressed="true">周三开盖</button>
+    <button data-src="assets/allopen.glb">一拨全开</button>
+  </div>
+  <button class="tog" id="rot">自动旋转：开</button>
+  <button class="tog" id="lab">标注：开</button>
+  <span class="hint">拖动旋转 · 滚轮 / 双指缩放 · 右键 / 双指平移</span>
+</div>
+<model-viewer id="mv" src="assets/open.glb" poster="assets/poster.jpg" alt="IDEA-05B 智能药盒 3D 模型"
+  camera-controls auto-rotate auto-rotate-delay="3000" rotation-per-second="10deg" interaction-prompt="none"
+  camera-orbit="25deg 64deg 0.5m" min-camera-orbit="auto auto 0.18m" max-camera-orbit="auto auto 1.2m"
+  shadow-intensity="0.7" shadow-softness="0.9" exposure="0.95" environment-image="neutral"><button class="hs" slot="hotspot-0" data-position="0.1156m 0.0486m -0.0580m" data-normal="0m 1m 0m"><span><b>后侧勾手</b>勾起杯子就能倒</span></button><button class="hs" slot="hotspot-1" data-position="0.1156m 0.0350m -0.0095m" data-normal="0m 1m 0m"><span><b>24 mm 倒嘴</b>药从中间排队出来</span></button><button class="hs" slot="hotspot-2" data-position="0.3176m 0.0310m -0.0600m" data-normal="0m 1m 0m"><span><b>全开拨片</b>拨一下 7 盖齐开</span></button><button class="hs" slot="hotspot-3" data-position="0.0020m 0.0355m -0.0340m" data-normal="0m 1m 0m"><span><b>托盘提耳</b>整盘端走装药</span></button><button class="hs" slot="hotspot-4" data-position="0.0600m 0.0120m 0.0005m" data-normal="0m 1m 0m"><span><b>段码屏 + 3 键</b>老人不用学手机</span></button></model-viewer>
+<script>
+const mv=document.getElementById('mv');
+document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  const orbit=mv.getCameraOrbit(); mv.src=b.dataset.src;
+  mv.addEventListener('load',()=>{mv.cameraOrbit=`${orbit.theta}rad ${orbit.phi}rad ${orbit.radius}m`;},{once:true});
+});
+const rot=document.getElementById('rot');
+rot.onclick=()=>{mv.autoRotate=!mv.autoRotate;rot.textContent='自动旋转：'+(mv.autoRotate?'开':'关');};
+const lab=document.getElementById('lab');
+lab.onclick=()=>{const off=mv.classList.toggle('nolabels');lab.textContent='标注：'+(off?'关':'开');};
+</script></body></html>

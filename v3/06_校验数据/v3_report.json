@@ -1,0 +1,154 @@
+{
+ "objects": [
+  {
+   "name": "TrayV3",
+   "verts": 1860,
+   "polys": 1513,
+   "volume_mm3": 73678.15,
+   "shells": 1,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "watertight": true,
+   "bbox_mm": [
+    316.0,
+    59.4,
+    20.2
+   ],
+   "bbox_min": [
+    2.0,
+    4.0,
+    21.8
+   ],
+   "wall_min_mm": 1.49,
+   "wall_p05_mm": 1.863,
+   "wall_median_mm": 5.259
+  },
+  {
+   "name": "CupV3_0",
+   "verts": 419,
+   "polys": 313,
+   "volume_mm3": 12022.05,
+   "shells": 1,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "watertight": true,
+   "bbox_mm": [
+    41.9,
+    54.0,
+    21.5
+   ],
+   "bbox_min": [
+    5.76,
+    7.6,
+    26.8
+   ],
+   "wall_min_mm": 1.08,
+   "wall_p05_mm": 1.6,
+   "wall_median_mm": 6.847
+  },
+  {
+   "name": "Lid_0",
+   "verts": 196,
+   "polys": 144,
+   "volume_mm3": 6904.07,
+   "shells": 1,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "watertight": true,
+   "bbox_mm": [
+    43.4,
+    62.0,
+    9.5
+   ],
+   "bbox_min": [
+    5.01,
+    4.0,
+    42.0
+   ],
+   "wall_min_mm": 1.5,
+   "wall_p05_mm": 1.932,
+   "wall_median_mm": 2.009
+  }
+ ],
+ "extra": {
+  "cell_cx": [
+   26.715,
+   71.145,
+   115.575,
+   160.005,
+   204.435,
+   248.865,
+   293.295
+  ],
+  "cup_x_tray_mm3": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "cup_x_lid_closed_mm3": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "lid_x_tray_closed_mm3": 0.0,
+  "handle_to_lid_gap_mm": 0.2,
+  "lid_sweep_cup_tray_mm3": {
+   "0": [
+    0.0,
+    0.0
+   ],
+   "15": [
+    0.0,
+    0.0
+   ],
+   "30": [
+    0.0,
+    0.0
+   ],
+   "45": [
+    0.0,
+    0.0
+   ],
+   "60": [
+    0.0,
+    0.0
+   ],
+   "75": [
+    0.0,
+    0.0
+   ],
+   "90": [
+    0.0,
+    0.0
+   ],
+   "105": [
+    0.0,
+    0.0
+   ]
+  },
+  "reversed_cup_x_tray_mm3": 85.535,
+  "cup_section": {
+   "lip_z": 8.0,
+   "low_z": 3.0,
+   "back_floor_z": 4.2,
+   "cove_r": 12.0,
+   "lip_land_y": [
+    0.0,
+    5.25
+   ],
+   "depth_rim_to_low": 12.0,
+   "lip_above_low": 5.0,
+   "funnel_half_angle_deg": 22.2,
+   "handle_top_world_z": 48.3,
+   "lid_cavity_top_world_z": 50.0
+  }
+ }
+}

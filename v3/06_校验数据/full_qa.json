@@ -1,0 +1,321 @@
+{
+ "removed": [
+  "CupWin_0",
+  "CupWin_1",
+  "CupWin_2",
+  "CupWin_3",
+  "CupWin_4",
+  "CupWin_5",
+  "CupWin_6",
+  "Cup_0",
+  "Cup_1",
+  "Cup_2",
+  "Cup_3",
+  "Cup_4",
+  "Cup_5",
+  "Cup_6",
+  "Desiccant",
+  "Gasket",
+  "Gasket.001",
+  "Gasket.002",
+  "Gasket.003",
+  "Gasket.004",
+  "Gasket.005",
+  "Gasket.006",
+  "GuideDisk",
+  "HingeRail",
+  "LoadCell",
+  "PillC0",
+  "PillC1",
+  "PillC2",
+  "PillC3",
+  "PillC5",
+  "PillT4",
+  "PillT6",
+  "Tray"
+ ],
+ "weigh_chain": {
+  "tray_to_carrier_gap": 0.0,
+  "tray_x_carrier_mm3": 0.0,
+  "tray_to_base_gap": 0.8,
+  "tray_to_spine_gap": 0.8,
+  "tray_to_shaft_gap": 1.805,
+  "tray_to_paddle_gap": 0.6,
+  "tray_to_sensorplate_gap": 1.2,
+  "carrier_to_base_gap": 0.885,
+  "carrier_to_sensorplate_gap": 2.0,
+  "carrier_to_stops_gap": 0.5,
+  "carrier_to_loadcell_fixed_end_gap": 0.77,
+  "spacer_to_carrier_gap": 0.0,
+  "spacer_to_loadcell_gap": 0.0,
+  "boss_to_loadcell_gap": 0.0
+ },
+ "lid_sweep_tri_hits": {
+  "0": {
+   "cup": 0,
+   "tray": 0,
+   "spine": 0
+  },
+  "30": {
+   "cup": 0,
+   "tray": 0,
+   "spine": 0
+  },
+  "60": {
+   "cup": 0,
+   "tray": 0,
+   "spine": 0
+  },
+  "90": {
+   "cup": 0,
+   "tray": 0,
+   "spine": 0
+  },
+  "105": {
+   "cup": 0,
+   "tray": 0,
+   "spine": 0
+  }
+ },
+ "handle_to_lid_gap": 0.242,
+ "gang_open": {
+  "table": [
+   {
+    "deg": 0,
+    "paddle_x_tray": 0,
+    "paddle_x_base": 0,
+    "paddle_x_spine": 0,
+    "paddle_x_lid6": 0,
+    "shaft_x_knuckles": 0,
+    "lids_x_cups": 0,
+    "lids_x_spine": 0
+   },
+   {
+    "deg": 10,
+    "paddle_x_tray": 0,
+    "paddle_x_base": 0,
+    "paddle_x_spine": 0,
+    "paddle_x_lid6": 0,
+    "shaft_x_knuckles": 0,
+    "lids_x_cups": 0,
+    "lids_x_spine": 0
+   },
+   {
+    "deg": 20,
+    "paddle_x_tray": 0,
+    "paddle_x_base": 0,
+    "paddle_x_spine": 0,
+    "paddle_x_lid6": 0,
+    "shaft_x_knuckles": 0,
+    "lids_x_cups": 0,
+    "lids_x_spine": 0
+   },
+   {
+    "deg": 30,
+    "paddle_x_tray": 0,
+    "paddle_x_base": 0,
+    "paddle_x_spine": 0,
+    "paddle_x_lid6": 0,
+    "shaft_x_knuckles": 0,
+    "lids_x_cups": 0,
+    "lids_x_spine": 0
+   },
+   {
+    "deg": 40,
+    "paddle_x_tray": 0,
+    "paddle_x_base": 0,
+    "paddle_x_spine": 0,
+    "paddle_x_lid6": 0,
+    "shaft_x_knuckles": 0,
+    "lids_x_cups": 0,
+    "lids_x_spine": 0
+   },
+   {
+    "deg": 50,
+    "paddle_x_tray": 0,
+    "paddle_x_base": 0,
+    "paddle_x_spine": 0,
+    "paddle_x_lid6": 0,
+    "shaft_x_knuckles": 0,
+    "lids_x_cups": 0,
+    "lids_x_spine": 0
+   },
+   {
+    "deg": 60,
+    "paddle_x_tray": 0,
+    "paddle_x_base": 0,
+    "paddle_x_spine": 0,
+    "paddle_x_lid6": 0,
+    "shaft_x_knuckles": 0,
+    "lids_x_cups": 0,
+    "lids_x_spine": 0
+   },
+   {
+    "deg": 70,
+    "paddle_x_tray": 0,
+    "paddle_x_base": 0,
+    "paddle_x_spine": 0,
+    "paddle_x_lid6": 0,
+    "shaft_x_knuckles": 0,
+    "lids_x_cups": 0,
+    "lids_x_spine": 0
+   },
+   {
+    "deg": 80,
+    "paddle_x_tray": 0,
+    "paddle_x_base": 0,
+    "paddle_x_spine": 0,
+    "paddle_x_lid6": 0,
+    "shaft_x_knuckles": 0,
+    "lids_x_cups": 0,
+    "lids_x_spine": 0
+   },
+   {
+    "deg": 90,
+    "paddle_x_tray": 0,
+    "paddle_x_base": 0,
+    "paddle_x_spine": 0,
+    "paddle_x_lid6": 0,
+    "shaft_x_knuckles": 0,
+    "lids_x_cups": 0,
+    "lids_x_spine": 0
+   },
+   {
+    "deg": 100,
+    "paddle_x_tray": 0,
+    "paddle_x_base": 0,
+    "paddle_x_spine": 0,
+    "paddle_x_lid6": 0,
+    "shaft_x_knuckles": 0,
+    "lids_x_cups": 0,
+    "lids_x_spine": 0
+   }
+  ],
+  "all_zero": true
+ },
+ "single_lid_shaft_tri": {
+  "30": 0,
+  "60": 0,
+  "100": 0
+ },
+ "template": {
+  "x_cups_mm3": 0.0,
+  "x_lids_tri": 0,
+  "x_spine_mm3": 0.0,
+  "x_tray_mm3": 0.0,
+  "to_tray_gap": 0.0,
+  "to_handle_gap": 0.7
+ },
+ "pairwise_checked": 103,
+ "pairwise_hits_mm3": [],
+ "cup_x_tray_mm3": [
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "cup_x_lid_closed_tri": [
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0
+ ],
+ "parts": {
+  "TrayV3": {
+   "volume_mm3": 73678.16,
+   "shells": 1,
+   "watertight": true,
+   "bbox_mm": [
+    316.0,
+    59.4,
+    20.2
+   ]
+  },
+  "CupV3_0": {
+   "volume_mm3": 12022.05,
+   "shells": 1,
+   "watertight": true,
+   "bbox_mm": [
+    41.9,
+    54.0,
+    21.5
+   ]
+  },
+  "Carrier": {
+   "volume_mm3": 10893.27,
+   "shells": 1,
+   "watertight": true,
+   "bbox_mm": [
+    296.0,
+    54.0,
+    3.9
+   ]
+  },
+  "HingeSpine": {
+   "volume_mm3": 27815.84,
+   "shells": 1,
+   "watertight": true,
+   "bbox_mm": [
+    304.0,
+    5.4,
+    17.3
+   ]
+  },
+  "Gasket_v3": {
+   "volume_mm3": 338.19,
+   "shells": 1,
+   "watertight": true,
+   "bbox_mm": [
+    310.0,
+    57.4,
+    0.35
+   ]
+  },
+  "LoadCell": {
+   "volume_mm3": 1419.78,
+   "shells": 1,
+   "watertight": true,
+   "bbox_mm": [
+    40.0,
+    6.35,
+    6.35
+   ]
+  },
+  "DriveShaft": {
+   "volume_mm3": 885.69,
+   "shells": 1,
+   "watertight": true,
+   "bbox_mm": [
+    311.6,
+    1.9,
+    2.55
+   ]
+  },
+  "Paddle": {
+   "volume_mm3": 111.21,
+   "shells": 1,
+   "watertight": true,
+   "bbox_mm": [
+    2.0,
+    10.29,
+    14.32
+   ]
+  },
+  "LoadingTemplate": {
+   "volume_mm3": 22011.32,
+   "shells": 1,
+   "watertight": true,
+   "bbox_mm": [
+    312.0,
+    59.4,
+    10.6
+   ]
+  }
+ }
+}

@@ -1,0 +1,41 @@
+{
+ "TrayV3": {
+  "Non-manifold Edges": "0",
+  "Bad Contiguous Edges": "0",
+  "Intersect Faces": "0",
+  "Shells": "1",
+  "Zero Faces": "0",
+  "Zero Edges": "5",
+  "Non-flat Faces": "44",
+  "Thin Faces": "2",
+  "Sharp Edges": "0",
+  "Overhang Faces": "470",
+  "Volume": "73678.214 mm³"
+ },
+ "CupV3_0": {
+  "Non-manifold Edges": "0",
+  "Bad Contiguous Edges": "0",
+  "Intersect Faces": "0",
+  "Shells": "1",
+  "Zero Faces": "0",
+  "Zero Edges": "33",
+  "Non-flat Faces": "2",
+  "Thin Faces": "0",
+  "Sharp Edges": "0",
+  "Overhang Faces": "37",
+  "Volume": "12022.0493 mm³"
+ },
+ "Lid_0": {
+  "Non-manifold Edges": "0",
+  "Bad Contiguous Edges": "0",
+  "Intersect Faces": "0",
+  "Shells": "1",
+  "Zero Faces": "0",
+  "Zero Edges": "0",
+  "Non-flat Faces": "0",
+  "Thin Faces": "0",
+  "Sharp Edges": "0",
+  "Overhang Faces": "3",
+  "Volume": "6904.0745 mm³"
+ }
+}

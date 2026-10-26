@@ -1,5 +1,13 @@
 # IDEA-05B 智能药盒 · 7 格演进版
 
+## 新版 v3（2026-10-26）
+
+- **介绍页**：https://anweat.github.io/idea-05b-smart-medicine-box/v3/　·　**3D 实时预览**：https://anweat.github.io/idea-05b-smart-medicine-box/v3/3d.html
+- 文件：[`v3/`](v3/)（文档、模型、打印件、渲染图、脚本、校验数据），说明见 [`v3/README.md`](v3/README.md)
+- 取药 / 装药 / 称重 / 感知 / 保存结构全部重做；下文为第一版（2026-10-18）内容，保留不动。
+
+---
+
 - **在线预览（GitHub Pages）**：https://anweat.github.io/idea-05b-smart-medicine-box/
 - **GitHub 仓库**：https://github.com/anweat/idea-05b-smart-medicine-box
 - **Release（完整 zip）**：https://github.com/anweat/idea-05b-smart-medicine-box/releases/tag/v1.0.0

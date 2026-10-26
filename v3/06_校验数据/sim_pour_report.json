@@ -1,0 +1,119 @@
+{
+ "v1": {
+  "pills": [
+   {
+    "pill": "pill0",
+    "settled_inside": true,
+    "slide_start_deg": 12.3,
+    "exit_deg": 100.0,
+    "exit_x_mm": -15.2
+   },
+   {
+    "pill": "pill1",
+    "settled_inside": true,
+    "slide_start_deg": 18.7,
+    "exit_deg": 97.7,
+    "exit_x_mm": 10.9
+   },
+   {
+    "pill": "pill2",
+    "settled_inside": true,
+    "slide_start_deg": 13.5,
+    "exit_deg": 100.0,
+    "exit_x_mm": 1.2
+   },
+   {
+    "pill": "pill3",
+    "settled_inside": true,
+    "slide_start_deg": 14.0,
+    "exit_deg": 100.0,
+    "exit_x_mm": -7.3
+   },
+   {
+    "pill": "pill4",
+    "settled_inside": true,
+    "slide_start_deg": 12.3,
+    "exit_deg": 100.0,
+    "exit_x_mm": 7.2
+   },
+   {
+    "pill": "pill5",
+    "settled_inside": true,
+    "slide_start_deg": 11.7,
+    "exit_deg": 84.8,
+    "exit_x_mm": -8.4
+   }
+  ],
+  "n": 6,
+  "n_out": 6,
+  "remaining_at_70": 6,
+  "remaining_at_end": 0,
+  "first_slide_deg": 11.7,
+  "median_slide_deg": 13.5,
+  "first_exit_deg": 84.8,
+  "last_exit_deg": 100.0
+ },
+ "v3": {
+  "pills": [
+   {
+    "pill": "pill0",
+    "settled_inside": true,
+    "slide_start_deg": 12.3,
+    "exit_deg": 56.7,
+    "exit_x_mm": -7.3
+   },
+   {
+    "pill": "pill1",
+    "settled_inside": true,
+    "slide_start_deg": 10.5,
+    "exit_deg": 57.9,
+    "exit_x_mm": 6.4
+   },
+   {
+    "pill": "pill2",
+    "settled_inside": true,
+    "slide_start_deg": 14.0,
+    "exit_deg": 49.1,
+    "exit_x_mm": -2.9
+   },
+   {
+    "pill": "pill3",
+    "settled_inside": true,
+    "slide_start_deg": 10.5,
+    "exit_deg": 42.1,
+    "exit_x_mm": -7.7
+   },
+   {
+    "pill": "pill4",
+    "settled_inside": true,
+    "slide_start_deg": 6.4,
+    "exit_deg": 39.8,
+    "exit_x_mm": 4.2
+   },
+   {
+    "pill": "pill5",
+    "settled_inside": true,
+    "slide_start_deg": 11.1,
+    "exit_deg": 48.0,
+    "exit_x_mm": 5.3
+   }
+  ],
+  "n": 6,
+  "n_out": 6,
+  "remaining_at_70": 0,
+  "remaining_at_end": 0,
+  "first_slide_deg": 6.4,
+  "median_slide_deg": 11.1,
+  "first_exit_deg": 39.8,
+  "last_exit_deg": 57.9
+ },
+ "setup": {
+  "mu": 0.4,
+  "fps": 60,
+  "settle_s": 0.67,
+  "tilt_s": 2.85,
+  "tilt_max_deg": 100.0,
+  "pivot": "front lip outer edge",
+  "substeps": 30
+ }
+}
