@@ -44,3 +44,7 @@ python3 tools/v3/make_intro.py && python3 tools/v3/make_3d_page.py
 ```
 
 边界：仿真为刚体近似；称重精度、IP54、手感未实测；不是医疗器械，称重只证明药离开药盒。
+
+## 许可
+
+CC BY-NC 4.0（署名 · 非商业）。**商业使用需事先联系作者授权**：GitHub [@anweat](https://github.com/anweat)。详见仓库根目录 [`LICENSE`](../LICENSE)。

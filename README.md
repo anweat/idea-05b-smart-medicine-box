@@ -1,5 +1,13 @@
 # IDEA-05B 智能药盒 · 7 格演进版
 
+## 许可
+
+- 设计、文档、模型、图片、脚本采用 **[CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans)**（署名 · 非商业），详见 [`LICENSE`](LICENSE)。
+- **商业使用需事先联系作者授权**：GitHub [@anweat](https://github.com/anweat)（[Issues](https://github.com/anweat/idea-05b-smart-medicine-box/issues)）。
+- 第三方组件 model-viewer 保持其 BSD-3-Clause 许可。
+
+---
+
 ## 新版 v3（2026-10-26）
 
 - **介绍页**：https://anweat.github.io/idea-05b-smart-medicine-box/v3/　·　**3D 实时预览**：https://anweat.github.io/idea-05b-smart-medicine-box/v3/3d.html

@@ -63,7 +63,8 @@ model-viewer{{flex:1;width:100%;min-height:420px;background:radial-gradient(elli
 <script type="module" src="{MV}"></script>
 </head><body>
 <div class="top"><b>IDEA-05B 智能药盒 · 3D</b><div class="sp"></div>
-<a href="index.html">← 介绍页</a><a class="opt" href="{REPO}" target="_blank" rel="noopener">GitHub</a></div>
+<a href="index.html">← 介绍页</a><a class="opt" href="{REPO}" target="_blank" rel="noopener">GitHub</a>
+<a class="opt" href="{REPO}/blob/main/LICENSE" target="_blank" rel="noopener">CC BY-NC 4.0 · 商用请联系</a></div>
 <div class="bar">
   <div class="seg" role="group" aria-label="状态">
     <button data-src="assets/closed.glb">闭盖</button>

@@ -1,0 +1,22 @@
+IDEA-05B 智能药盒 · 许可声明
+Copyright (c) 2026 anweat
+
+本仓库中的设计、文档、三维模型、打印文件、图片、网页与脚本（除下文第三方组件外），
+采用 知识共享 署名-非商业性使用 4.0 国际许可协议（CC BY-NC 4.0）授权：
+  https://creativecommons.org/licenses/by-nc/4.0/legalcode.zh-hans
+
+你可以：在非商业用途下复制、分发、展示、修改本作品，但需署名（注明 IDEA-05B / anweat 并附仓库链接）。
+你不可以：将本作品或其衍生作品用于商业用途（包括但不限于生产销售、商业产品开发、付费服务）。
+
+商业使用：需事先取得作者书面授权，请通过 GitHub 联系 @anweat
+  https://github.com/anweat/idea-05b-smart-medicine-box/issues
+
+第三方组件：
+  docs/assets/model-viewer.min.js —— Google model-viewer，BSD-3-Clause，见 docs/assets/NOTICE.txt
+
+免责声明：本项目为设计概念与工程验证，不是医疗器械；称重仅证明药品离开药盒，不证明服用。
+按"现状"提供，不附带任何明示或默示担保。
+
+---
+Licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
+Commercial use requires prior written permission from the author (GitHub: @anweat).
