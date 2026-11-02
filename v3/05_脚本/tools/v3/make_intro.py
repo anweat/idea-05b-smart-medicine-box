@@ -78,6 +78,49 @@ INNOV = [('取药方式由“捏取”改为“倾倒与推取”',
 VALUE = [('约 ¥210', '单台出厂成本（千台批量估算）'), ('约 ¥17', '全部结构创新带来的单台成本增量'),
          ('¥399', '建议零售价，一次买断'), ('约 ¥2 / 月', '用户持续支出（干燥片）')]
 
+
+
+# ---------------------------------------------------------------- 成本明细：直接读 design/34_成本估算_v3.md 的表格，页面与文档保持一致
+def md_table(path, heading):
+    """取 markdown 里某个二级标题下的第一张表，返回数据行（去掉表头、分隔行与「小计 / 合计」行）。"""
+    lines = open(path, encoding='utf-8').read().split('\n')
+    i = next(k for k, l in enumerate(lines) if l.startswith('## ' + heading))
+    rows = []
+    for l in lines[i + 1:]:
+        if l.startswith('## '):
+            break
+        if l.startswith('|'):
+            rows.append([c.strip() for c in l.strip('|').split('|')])
+        elif rows:
+            break
+    return [r for r in rows[2:] if not r[0].startswith('**')]
+
+
+COST_MD = os.path.join(DES, '34_成本估算_v3.md')
+SPEC_FIX = {'FPC，藏在铰链脊里': '柔性电路板，置于铰链脊内'}       # 文档里的口语说明换成正式说法
+ELEC = md_table(COST_MD, '2.')                    # 物料 | 选型 | 数量 | 单价 | 小计
+STRUCT = md_table(COST_MD, '3.')                  # 零件 | 材料 | 重量 | ¥ / 台 | 说明
+MOLD = md_table(COST_MD, '5.')                    # 模具 | ¥ 万
+OTHER = [('组装、称重标定与出厂测试', '12.0'), ('包装与说明书', '6.0'), ('装药漏斗板（随机附送）', '1.5')]
+
+
+def cost_tables():
+    el = ''.join(f'<tr><td>{E(r[0])}</td><td class="m">{E(SPEC_FIX.get(r[1], r[1]))}</td><td class="n">{E(r[2])}</td><td class="n">{E(r[4])}</td></tr>'
+                 for r in ELEC)
+    st = ''.join(f'<tr><td>{E(r[0])}</td><td class="m">{E(r[1])}</td><td class="n">{E(r[3])}</td></tr>' for r in STRUCT)
+    ot = ''.join(f'<tr><td>{E(a)}</td><td class="n">{E(b)}</td></tr>' for a, b in OTHER)
+    mo = ''.join(f'<tr><td>{E(r[0])}</td><td class="n">{E(r[1])}</td></tr>' for r in MOLD)
+    e_sum = sum(float(r[4]) for r in ELEC); s_sum = sum(float(r[3]) for r in STRUCT)
+    m_lo = sum(float(r[1].split('–')[0]) for r in MOLD); m_hi = sum(float(r[1].split('–')[1]) for r in MOLD)
+    return f'''<details class="costd" open><summary>成本明细（千台批量估算，单位：元 / 台）</summary><div class="ctab">
+<div><h4>电子元件 <span>≈ {e_sum:.0f}</span></h4><table><tr><th>物料</th><th>规格</th><th class="n">数量</th><th class="n">小计</th></tr>{el}</table></div>
+<div><h4>结构件 <span>≈ {s_sum:.0f}</span></h4><table><tr><th>零件</th><th>材料</th><th class="n">小计</th></tr>{st}</table></div>
+<div><h4>其他费用 <span>≈ {sum(float(b) for _, b in OTHER):.1f}</span></h4><table>{ot}</table>
+<h4 style="margin-top:16px">一次性模具 <span>约 {m_lo:.0f}–{m_hi:.0f} 万元</span></h4><table>{mo}</table>
+<p class="cnote">模具按产量摊销：5 千台约 22–37 元 / 台，1 万台约 11–18 元 / 台。认证检测费用未计入。</p></div>
+</div></details>'''
+
+
 # ---------------------------------------------------------------- 板块二 产品与结构（图为主，每处一句）
 USE = [('cup', '开启当日日盖，当日药格亮灯'), ('pour', '勾起药杯，倾斜即可倒出'),
        ('allopen', '拨动拨片，七个日盖同时开启'), ('loading', '整盘取出，配合漏斗板分装')]
@@ -130,8 +173,15 @@ figure.fit .im{background:#F7F8FA} figure.fit .im img{object-fit:contain} figure
 .f4 .im{aspect-ratio:4/3} .keys .im{aspect-ratio:16/9}
 figcaption{padding:10px 14px;font-size:14px;color:var(--ink2)} figcaption b{display:block;color:var(--ink);font-size:16px;margin-bottom:2px}
 .note{color:var(--ink2);font-size:14.5px;margin:12px 0 0}
+.costd{margin-top:16px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 18px}
+.costd summary{cursor:pointer;font-size:14px;color:var(--ink2);font-weight:600;padding:2px 0}
+.ctab{display:grid;grid-template-columns:1.25fr 1fr .9fr;gap:22px;margin-top:12px}
+.ctab h4{margin:0 0 6px;font-size:14px;display:flex;justify-content:space-between} .ctab h4 span{color:var(--accent);font-variant-numeric:tabular-nums}
+.ctab table{border-collapse:collapse;width:100%;font-size:12.5px} .ctab th{color:var(--mute);font-weight:500;text-align:left;padding:4px 4px;border-bottom:1px solid var(--line);white-space:nowrap}
+.ctab td{padding:4px 4px;border-bottom:1px solid var(--line);color:var(--ink2);vertical-align:top} .ctab td.m{color:var(--mute)} .ctab .n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cnote{font-size:12px;color:var(--mute);margin:8px 0 0}
 footer{margin-top:56px;color:var(--mute);font-size:12px;text-align:center;line-height:1.9} footer a{color:inherit}
-@media (max-width:900px){.cover,.f2,.fov,.c3{grid-template-columns:1fr} .stats,.c4,.f4{grid-template-columns:1fr 1fr} .top nav{display:none} .cover h1{font-size:28px}}
+@media (max-width:900px){.cover,.f2,.fov,.c3,.ctab{grid-template-columns:1fr} .stats,.c4,.f4{grid-template-columns:1fr 1fr} .top nav{display:none} .cover h1{font-size:28px}}
 @media (max-width:520px){main{padding:0 16px 40px} .top{padding:8px 12px;gap:8px} .top b{font-size:13px} .top button{display:none} .stats,.c4{grid-template-columns:1fr} .stat b{font-size:22px} .inv{grid-template-columns:40px 1fr} .inv i{font-size:20px}}
 @media print{.top{display:none} body{background:#fff} .part{break-before:page}}
 '''
@@ -170,7 +220,8 @@ page = f'''<!doctype html>
 <section><h3><i>1.3</i>应用场景</h3><div class="cards c4">{scenes}</div></section>
 <section><h3><i>1.4</i>核心创新</h3><div class="innov">{innov}</div></section>
 <section><h3><i>1.5</i>价值与成本</h3><div class="stats">{value}</div>
-<p class="note">产品定位于白牌分格药盒（¥23–45）与进口按月收费分药设备（¥213–888 / 月）之间；多数结构创新由模具几何实现，不增加零件数量。</p></section>
+<p class="note">产品定位于白牌分格药盒（¥23–45）与进口按月收费分药设备（¥213–888 / 月）之间；多数结构创新由模具几何实现，不增加零件数量。</p>
+{cost_tables()}</section>
 
 <div class="part" id="p2"><small>板块二</small><h2>产品与结构</h2></div>
 <section><h3><i>2.1</i>产品外观</h3><div class="figs f2">
