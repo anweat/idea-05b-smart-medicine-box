@@ -146,10 +146,14 @@ for mode in modes:
         render(sc, 'loading_v3')
     elif mode == 'front':
         lid(SHOW, 0); fl.hide_render = bd.hide_render = True
+        sc.render.film_transparent = True                 # 正交视图透明底，排版时再铺底色
+        sc.render.image_settings.color_mode = 'RGBA'
         camera(sc, (0.16, -1.0, 0.030), (0.16, 0.035, 0.030), ortho=0.365)
         render(sc, 'front_v3')
     elif mode == 'top':
         lid(SHOW, 100); fl.hide_render = bd.hide_render = True
+        sc.render.film_transparent = True
+        sc.render.image_settings.color_mode = 'RGBA'
         camera(sc, (0.16, 0.035, 1.0), (0.16, 0.035, 0.0), ortho=0.375)
         render(sc, 'top_v3')
     elif mode == 'cup':
